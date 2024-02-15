@@ -2,14 +2,9 @@ import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 
 
-const MyPosts = () => {
+const MyPosts = (props) => {
 
-    let postData = [
-        {id: 1, name: 'Hi, how are you?', likesCount: 24},
-        {id: 2, name: 'It\'s my first post', likesCount: 11},
-    ]
-
-    let posts = postData.map ( post => <Post message={post.message} likesCounts={post.likesCount}/>)
+    let postsElements = props.post.map( post => <Post message={post.name} likesCounts={post.likesCount}/>)
 
     return (
         <div className={s.content}>
@@ -21,7 +16,7 @@ const MyPosts = () => {
                 My posts
             </div>
             <div className={s.postContainer}>
-                { posts }
+                { postsElements }
             </div>
         </div>
 

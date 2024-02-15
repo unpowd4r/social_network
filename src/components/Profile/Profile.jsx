@@ -5,11 +5,11 @@ import React from "react";
 // import Post from "./MyPosts/Post/Post";
 
 
-const Profile = () => {
+const Profile = (props) => {
     return (
-        <div>
+        <div className={s.content}>
             <ProfileInfo/>
-            <MyPosts/>
+            <MyPosts post={props.post}/>
         </div>
     );
 }
