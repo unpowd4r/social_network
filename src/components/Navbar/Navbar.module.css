@@ -1,0 +1,35 @@
+.nav {
+    grid-area: n;
+    background-color: #a7f8ee;
+
+    padding: 10px;
+}
+
+/*.item {*/
+/*    font-size: 35px;*/
+/*    font-family: 'Bebas Neue Bold';*/
+
+/*    margin-left: 10px;*/
+/*    padding-bottom: 10px;*/
+/*}*/
+
+/*a {*/
+/*    !*color: #ffffff;*!*/
+/*    text-decoration: none;*/
+/*    cursor: pointer;*/
+/*}*/
+
+.item a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+
+    font-size: 45px;
+    font-weight: bold;
+    font-family: Calibri;
+    padding: 15px;
+}
+
+.item a.active {
+    color: #ff8d1f;
+}

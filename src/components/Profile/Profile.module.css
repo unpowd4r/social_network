@@ -1,0 +1,19 @@
+.content {
+    grid-area: c;
+    background-color: #a6f6ec;
+    gap: 5px;
+}
+
+.desc {
+
+}
+
+.profile {
+    display: flex;
+    gap: 10px;
+}
+
+.footerPhoto {
+    width: 1000px;
+    height: 200px;
+}

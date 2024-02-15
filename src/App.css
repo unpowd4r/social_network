@@ -1,0 +1,39 @@
+.app-wrapper {
+    background-color: #eaeeee;
+    background-size: cover;
+
+    display: grid;
+    gap: 10px;
+
+    grid-template-areas:
+            "h h"
+            "n c";
+
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 2fr 10fr;
+
+    width: 1600px;
+
+    margin: 0 auto;
+
+}
+.footer-photo {
+    width: 1337px;
+    height: 300px;
+}
+
+.ava-photo {
+    width: 220px;
+    height: 200px;
+
+    padding-top: 3px;
+    padding-left: 8px;
+}
+
+.app-wrapper-content {
+    grid-area: c;
+    background-color: #a6f6ec;
+    gap: 5px;
+}
+
+
