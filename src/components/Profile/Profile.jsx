@@ -6,10 +6,13 @@ import React from "react";
 
 
 const Profile = (props) => {
+
+    const { posts } = props
+
     return (
         <div className={s.content}>
             <ProfileInfo/>
-            <MyPosts post={props.post}/>
+            <MyPosts posts={posts}/>
         </div>
     );
 }
