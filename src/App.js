@@ -8,7 +8,7 @@ import {Route, Routes} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import {newPostTextNull} from "./redux/state";
+import {messageChange, newPostTextNull} from "./redux/state";
 
 
 
@@ -22,10 +22,16 @@ const App = (props) => {
                     <Route path='/'>
                         <Route path='profile'
                                element={<Profile
-                                   posts={props.state.profilePage.posts} addPost={props.addPost} newPostText={props.state.profilePage.newPostText} postChange={props.postChange}/>}/>
+                                   posts={props.state.profilePage.posts}
+                                   addPost={props.addPost}
+                                   newPostText={props.state.profilePage.newPostText}
+                                   postChange={props.postChange}/>}/>
                         <Route path='dialogs'
                                element={<Dialogs
                                    dialogs={props.state.messagesPage.dialogs}
+                                   newMessages={props.state.messagesPage.newMessages}
+                                   messageChange={props.messageChange}
+                                   addMessage={props.addMessage}
                                    messages={props.state.messagesPage.messages}/>}/>
                         <Route path='news' element={<News />}/>
                         <Route path='music' element={<Music />}/>

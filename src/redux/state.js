@@ -23,6 +23,9 @@ let state =
                 {id: 4, name: 'Yo!'},
                 {id: 5, name: 'Yo!'},
             ],
+            newMessages :[
+                ''
+            ],
             dialogs: [
                 {id: 1, name: 'Valera'},
                 {id: 2, name: 'Fedor'},
@@ -48,6 +51,22 @@ export let addPost = () => {
 
 export let postChange = (newText) => {
     state.profilePage.newPostText = newText
+    renderEntireTree(state)
+}
+
+export let addMessage = () => {
+    let newMessage = {
+        id: 6,
+        name: state.messagesPage.newMessages,
+    };
+
+    state.messagesPage.messages.push(newMessage)
+    state.messagesPage.newMessages = ''
+    renderEntireTree(state);
+}
+
+export let messageChange = (newMessage) => {
+    state.messagesPage.newMessages = newMessage
     renderEntireTree(state)
 }
 
