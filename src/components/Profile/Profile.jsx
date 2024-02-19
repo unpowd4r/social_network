@@ -2,8 +2,6 @@ import s from './Profile.module.css'
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "../ProfileInfo/ProfileInfo";
 import React from "react";
-import {newPostTextNull} from "../../redux/state";
-// import Post from "./MyPosts/Post/Post";
 
 
 const Profile = (props) => {

@@ -1,9 +1,5 @@
-let renderEntireTree = () => {
-    console.log('state is changed')
-}
-
-let state =
-    {
+let store = {
+    _state: {
         profilePage: {
             posts: [
                 {id: 1, name: 'Hi, how are you?', likesCount: 24},
@@ -25,7 +21,7 @@ let state =
                 {id: 4, name: 'Yo!'},
                 {id: 5, name: 'Yo!'},
             ],
-            newMessages :[
+            newMessages: [
                 ''
             ],
             dialogs: [
@@ -37,45 +33,47 @@ let state =
                 {id: 6, name: 'Sergei'},
             ],
         },
-    };
+    },
+    _callSubscriber() {
+        console.log('state is changed')
+    },
+    getState() {
+        return this._state;
+    },
+    addPost() {
+        let newPost = {
+            id: 5,
+            name: this._state.profilePage.newPostText,
+            likesCount: 0
+        };
 
-export const addPost = () => {
-    let newPost = {
-        id: 5,
-        name: state.profilePage.newPostText,
-        likesCount: 0
-    };
+        this._state.profilePage.posts.push(newPost);
+        this._state.profilePage.newPostText = ''
+        this._callSubscriber(this._state);
+    },
+    postChange(newText) {
+        this._state.profilePage.newPostText = newText
+        this._callSubscriber(this._state)
+    },
+    addMessage() {
+        let newMessage = {
+            id: 6,
+            name: this._state.messagesPage.newMessages,
+        };
 
-    state.profilePage.posts.push(newPost);
-    state.profilePage.newPostText = ''
-    renderEntireTree(state);
+        this._state.messagesPage.messages.push(newMessage)
+        this._state.messagesPage.newMessages = ''
+        this._callSubscriber(this._state);
+    },
+    messageChange(newMessage) {
+        this._state.messagesPage.newMessages = newMessage
+        this._callSubscriber(this._state)
+    },
+    subscribe(observer) {
+        this._callSubscriber = observer
+    },
 };
 
-export const postChange = (newText) => {
-    state.profilePage.newPostText = newText
-    renderEntireTree(state)
-}
+export default store;
+window.store = store
 
-export const addMessage = () => {
-    let newMessage = {
-        id: 6,
-        name: state.messagesPage.newMessages,
-    };
-
-    state.messagesPage.messages.push(newMessage)
-    state.messagesPage.newMessages = ''
-    renderEntireTree(state);
-}
-
-export const messageChange = (newMessage) => {
-    state.messagesPage.newMessages = newMessage
-    renderEntireTree(state)
-}
-
-export const subscribe = (observer) => {
-    renderEntireTree = observer
-}
-
-
-
-export default state;

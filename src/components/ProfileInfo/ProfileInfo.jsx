@@ -13,7 +13,7 @@ const ProfileInfo = () => {
             <div className={s.profileDesc}>
                 <div className={s.background_photo}>
                     <img className='ava-photo'
-                         src='https://img.freepik.com/free-photo/full-shot-couple-looking-at-the-moon_23-2150385850.jpg?w=996&t=st=1706134538~exp=1706135138~hmac=f89460c4ccb781344ec6ae9bc3106ae9a532ca642f937a9e8ac744a36c490d00'
+                         src='https://img.freepik.com/free-photo/image-of-holstein-cow-on-yellow-background_1409-4230.jpg?w=740&t=st=1706177509~exp=1706178109~hmac=fd205c6d8226c82ac7de100016b9b71153ed56490fa79930829287a97b32821e'
                          alt='img'/>
                 </div>
                 <div className={s.desc}>
