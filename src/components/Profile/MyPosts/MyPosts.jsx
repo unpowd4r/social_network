@@ -4,7 +4,7 @@ import React from "react";
 
 
 const MyPosts = (props) => {
-    const { posts, postChange, newPostText, addPost } = props
+    const { posts, dispatch, newPostText } = props
 
     let postsElements = posts.map( post => <Post message={post.name}
                                                  likesCounts={post.likesCount}/>)
@@ -12,12 +12,12 @@ const MyPosts = (props) => {
     let newPostElement = React.createRef()
 
     let addPosts = () => {
-        addPost()
+        dispatch({type: 'ADD-POST'})
     }
 
     let postChanges = () => {
         let text = newPostElement.current.value
-        postChange(text)
+        dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: text})
     }
 
     return (
