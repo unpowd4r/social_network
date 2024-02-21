@@ -2,41 +2,41 @@ import React from "react";
 import styles from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Messages from './Messages/Messages'
+import {sendMessageCreator, updateNewMessageBodyCreator} from "../../redux/state";
 
 
 const Dialogs = (props) => {
 
-    const {dialogs, messages, messageChange, addMessage, newMessages} = props
+    const {dialogs, messages, dispatch, newMessages} = props
 
     let dialogsElements = dialogs.map(dialog => <DialogItem name={dialog.name}
                                                             id={dialog.id}/>);
-    let messagesElements = messages.map(message => <Messages message={message.name}/>);
+    let messagesElements = messages.map(message => <Messages message={message.msg}/>);
 
-    let addMessageElement = React.createRef()
     let addMessages = () => {
-        addMessage()
+        dispatch(sendMessageCreator())
     }
 
-    let messageChanges = () => {
-        let text = addMessageElement.current.value
-        messageChange(text)
+    let messageChanges = (e) => {
+        let text = e.target.value
+        let action = updateNewMessageBodyCreator(text)
+        dispatch(action)
     }
 
     return (
         <div className={styles.dialogs}>
             <div className={styles.dialogsMessages}>
-            <div className={styles.dialogsItems}>
-                {dialogsElements}
-            </div>
-            <div className={styles.messages}>
-                {messagesElements}
-            </div>
+                <div className={styles.dialogsItems}>
+                    {dialogsElements}
+                </div>
+                <div className={styles.messages}>
+                    {messagesElements}
+                </div>
             </div>
             <div className={styles.buttonAndArea}>
                 <textarea onChange={messageChanges}
-                          ref={addMessageElement}
                           value={newMessages}></textarea>
-                <button onClick={addMessages}> Отправить </button>
+                <button onClick={addMessages}> Отправить</button>
             </div>
         </div>
     )

@@ -1,6 +1,8 @@
 .dialogsItems {
     padding: 10px;
     margin-left: 20px;
+    color: white;
+    text-decoration: none;
 }
 .dialogsMessages {
     display: inline-flex;
@@ -9,6 +11,7 @@
 
 .dialogsItems .active {
     color: #ff8d1f;
+    text-decoration: none;
 }
 
 .messages {

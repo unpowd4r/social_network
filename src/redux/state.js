@@ -1,5 +1,8 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
+const SEND_MESSAGE = 'SEND-MESSAGE'
 let store = {
     _state: {
         profilePage: {
@@ -17,11 +20,11 @@ let store = {
         },
         messagesPage: {
             messages: [
-                {id: 1, name: 'Hi'},
-                {id: 2, name: 'How are you?'},
-                {id: 3, name: 'Yo!'},
-                {id: 4, name: 'Yo!'},
-                {id: 5, name: 'Yo!'},
+                {id: 1, msg: 'Hi'},
+                {id: 2, msg: 'How are you?'},
+                {id: 3, msg: 'Yo!'},
+                {id: 4, msg: 'Yo!'},
+                {id: 5, msg: 'Yo!'},
             ],
             newMessages: [
                 ''
@@ -43,18 +46,7 @@ let store = {
         return this._state;
     },
     addMessage() {
-        let newMessage = {
-            id: 6,
-            name: this._state.messagesPage.newMessages,
-        };
 
-        this._state.messagesPage.messages.push(newMessage)
-        this._state.messagesPage.newMessages = ''
-        this._callSubscriber(this._state);
-    },
-    messageChange(newMessage) {
-        this._state.messagesPage.newMessages = newMessage
-        this._callSubscriber(this._state)
     },
     subscribe(observer) {
         this._callSubscriber = observer
@@ -69,9 +61,24 @@ let store = {
             this._state.profilePage.posts.push(newPost);
             this._state.profilePage.newPostText = ''
             this._callSubscriber(this._state);
+
         } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newText
             this._callSubscriber(this._state)
+
+        } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+            this._state.messagesPage.newMessages = action.newText
+            this._callSubscriber(this._state)
+
+        } else if (action.type === SEND_MESSAGE) {
+            let newMessage = {
+                id: 6,
+                msg: this._state.messagesPage.newMessages,
+            };
+
+            this._state.messagesPage.messages.push(newMessage)
+            this._state.messagesPage.newMessages = ''
+            this._callSubscriber(this._state);
         }
     },
 };
@@ -79,6 +86,10 @@ let store = {
 export const addPostActionCreator = () => ({ type: ADD_POST })
 export const updateNewTextActionCreator = (text) =>
     ({ type: UPDATE_NEW_POST_TEXT, newText: text })
+
+export const sendMessageCreator = () => ({ type: SEND_MESSAGE })
+export const updateNewMessageBodyCreator = (text) =>
+    ({ type: UPDATE_NEW_MESSAGE_BODY, newText: text })
 
 export default store;
 window.store = store

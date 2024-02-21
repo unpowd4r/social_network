@@ -28,8 +28,7 @@ const App = (props) => {
                                element={<Dialogs
                                    dialogs={props.state.messagesPage.dialogs}
                                    newMessages={props.state.messagesPage.newMessages}
-                                   messageChange={props.messageChange}
-                                   addMessage={props.addMessage}
+                                   dispatch={props.dispatch}
                                    messages={props.state.messagesPage.messages}/>}/>
                         <Route path='news' element={<News />}/>
                         <Route path='music' element={<Music />}/>
