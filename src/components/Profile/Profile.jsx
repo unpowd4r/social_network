@@ -4,7 +4,7 @@ import React from "react";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 
-const Profile = (props) => {
+const Profile = () => {
     return (
         <div className={s.content}>
             <ProfileInfo/>
